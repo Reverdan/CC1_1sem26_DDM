@@ -258,3 +258,99 @@ ConstraintLayout (Raiz)
 ---
 
 > Este arquivo fornece uma documentação completa e detalhada do layout, ideal para incluir no GitHub como documentação do projeto.
+
+---
+
+## Explicação do Código Java (MainActivity)
+
+Este código Java é a estrutura principal de um aplicativo Android simples para realizar operações matemáticas básicas (soma, subtração, multiplicação e divisão). Ele utiliza a biblioteca `AppCompat` para garantir compatibilidade com versões antigas do Android.
+
+Aqui está a explicação detalhada, dividida por blocos:
+
+---
+
+### 1. Pacote e Importações
+
+```java
+package com.example.soma;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+// ... imports de compatibilidade (EdgeToEdge, ViewCompat, etc)
+```
+
+- **`package`:** Define o endereço único do seu aplicativo.
+- **`import`:** Traz as ferramentas necessárias. Por exemplo, `EditText` para campos de texto, `Button` para botões e `TextView` para exibir o resultado. Os imports `androidx` servem para que o layout se ajuste corretamente a telas modernas (bordas arredondadas, barras de status, etc).
+
+---
+
+### 2. Definição da Classe e Atributos
+
+```java
+public class MainActivity extends AppCompatActivity {
+    EditText edtPrimeiroNumero;
+    EditText edtSegundoNumero;
+    Button btnSomar;
+    // ... outros botões e TextView
+```
+
+Aqui declaramos as variáveis que representarão os elementos da interface visual. No Android, primeiro "avisamos" que esses objetos existem no código Java para depois conectá-los ao layout XML.
+
+---
+
+### 3. O Método onCreate (O coração da Activity)
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    EdgeToEdge.enable(this); // Ativa o layout de ponta a ponta
+    setContentView(R.layout.activity_main); // Conecta este código ao arquivo XML de layout
+```
+
+- O `onCreate` é o primeiro método executado quando o app abre.
+- **`setContentView(R.layout.activity_main)`:** É a linha mais importante; ela diz ao Java qual arquivo visual (XML) ele deve "inflar" na tela.
+
+---
+
+### 4. Vinculação de Componentes (findViewById)
+
+```java
+edtPrimeiroNumero = findViewById(R.id.edtPrimeiroNumero);
+btnSomar = findViewById(R.id.btnSomar);
+// ... repete para todos os outros componentes
+```
+
+O comando `findViewById` faz a ponte entre o código Java e o ID que você definiu no XML. Sem isso, o Java não saberia qual botão o usuário está clicando.
+
+---
+
+### 5. Lógica de Clique e Operações
+
+Todos os botões seguem a mesma estrutura de "escuta" de clique (`setOnClickListener`). Vamos detalhar o de divisão como exemplo:
+
+```java
+btnDividir.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        // 1. Pega o texto do EditText e converte para Double (número decimal)
+        Double n1 = Double.valueOf(edtPrimeiroNumero.getText().toString());
+        Double n2 = Double.valueOf(edtSegundoNumero.getText().toString());
+
+        // 2. Realiza a conta
+        Double resultado = n1 / n2;
+
+        // 3. Converte o resultado de volta para texto e exibe na tela
+        txvResultado.setText(resultado.toString());
+    }
+});
+```
+
+**Pontos Importantes:**
+
+- **Conversão de Tipos:** O Android recebe o que o usuário digita como um `Editable`/`String`. Para fazer cálculos, você precisa converter para um tipo numérico (neste caso, `Double`).
+- **Exibição:** O método `setText()` só aceita `String`. Por isso, usamos `resultado.toString()` antes de mostrar o valor no `TextView`.
+- **Repetição:** O código repete essa lógica para `+`, `-`, `*` e `/`, mudando apenas o operador matemático interno.
