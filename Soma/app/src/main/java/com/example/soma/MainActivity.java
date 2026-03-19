@@ -18,6 +18,9 @@ public class MainActivity extends AppCompatActivity
     EditText edtPrimeiroNumero;
     EditText edtSegundoNumero;
     Button btnSomar;
+    Button btnSubtrair;
+    Button btnMultiplicar;
+    Button btnDividir;
     TextView txvResultado;
 
 
@@ -36,7 +39,49 @@ public class MainActivity extends AppCompatActivity
         edtPrimeiroNumero = findViewById(R.id.edtPrimeiroNumero);
         edtSegundoNumero = findViewById(R.id.edtSegundoNumero);
         btnSomar = findViewById(R.id.btnSomar);
+        btnSubtrair = findViewById(R.id.btnSubtrair);
+        btnMultiplicar = findViewById(R.id.btnMultiplicar);
+        btnDividir = findViewById(R.id.btnDividir);
         txvResultado = findViewById(R.id.txvResultado);
+
+        btnDividir.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Double n1 = Double.valueOf(edtPrimeiroNumero.getText().toString());
+                Double n2 = Double.valueOf(edtSegundoNumero.getText().toString());
+                Double resultado = n1 / n2;
+
+                txvResultado.setText(resultado.toString());
+            }
+        });
+
+        btnMultiplicar.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Double n1 = Double.valueOf(edtPrimeiroNumero.getText().toString());
+                Double n2 = Double.valueOf(edtSegundoNumero.getText().toString());
+                Double resultado = n1 * n2;
+
+                txvResultado.setText(resultado.toString());
+            }
+        });
+
+        btnSubtrair.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Double n1 = Double.valueOf(edtPrimeiroNumero.getText().toString());
+                Double n2 = Double.valueOf(edtSegundoNumero.getText().toString());
+                Double resultado = n1 - n2;
+
+                txvResultado.setText(resultado.toString());
+            }
+        });
 
         btnSomar.setOnClickListener(new View.OnClickListener()
         {

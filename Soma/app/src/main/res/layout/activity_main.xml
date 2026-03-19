@@ -45,17 +45,57 @@
             android:layout_marginBottom="40dp"
             android:text="" />
 
-        <Button
-            android:id="@+id/btnSomar"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnSomar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:text="Somar" />
+
+            <Button
+                android:id="@+id/btnSubtrair"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:text="Subtrair" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
-            android:text="Somar" />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnMultiplicar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:text="Multiplicar" />
+
+            <Button
+                android:id="@+id/btnDividir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:text="Dividir" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/txvResultado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="30sp"
             android:text="Resultado" />
 
     </LinearLayout>
