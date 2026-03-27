@@ -1,5 +1,7 @@
 # Análise Detalhada do Layout XML - Calculadora Android
 
+# Vide também README_1 para continuação desta explicação
+
 ## Visão Geral
 
 Este é um arquivo de layout XML para uma aplicação Android que implementa uma calculadora básica. O layout utiliza um `ConstraintLayout` como container principal e organiza os elementos através de `LinearLayout`s aninhados.
